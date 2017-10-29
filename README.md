@@ -17,7 +17,7 @@ Retourne une citation aléatoire parmis toutes les citations du personnage dans 
 
 <h3>Toutes les citations</h3>
 <p>GET | POST /api/all<br>
-Retourne toutes les citations disponible.</p>
+<markdown>Retourne toutes les citations disponible.</p><markdown>
 
 <p>GET | POST /api/all/personnage<br>
 Retourne toutes les citations du personnage.</p>

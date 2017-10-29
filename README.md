@@ -1,30 +1,32 @@
-# API citations Kaamelott
-API de citations de la série française Kaamelott.
+<h1>API citations Kaamelott</h1>
+<p>API de citations de la série française Kaamelott.</p>
 
-## Utilisation
-### Citation aléatoire
-GET | POST /api/random
-Retourne une citation aléatoire parmis toutes les citations disponible.
+<h2>Utilisation</h2>
+<h3>Citation aléatoire</h3>
+<p>GET | POST /api/random<br>
+Retourne une citation aléatoire parmis toutes les citations disponible.</p>
+<p>GET | POST /api/random/personnage<br>
+Retourne une citation aléatoire parmis toutes les citations du personnage.</p>
 
-GET | POST /api/random/<personnage>
-Retourne une citation aléatoire parmis toutes les citations du personnage.
+<p>GET | POST /api/random/livre<br>
+Retourne une citation aléatoire parmis toutes les citations du livre.</p>
 
-GET | POST /api/random/<livre>
-Retourne une citation aléatoire parmis toutes les citations du livre.
-
-GET | POST /api/random/<personnage>/<livre>
-Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.
+<p>GET | POST /api/random/personnage/livre<br>
+Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.</p>
 
 
-### Toutes les citations
-GET | POST /api/all
-Retourne toutes les citations disponible.
-GET | POST /api/all/<personnage>
-Retourne toutes les citations du personnage.
-GET | POST /api/all/<livre>
-Retourne toutes les citations du livre.
-GET | POST /api/all/<personnage>/<livre>
-Retourne toutes les citations du personnage dans le livre.
+<h3>Toutes les citations</h3>
+<p>GET | POST /api/all<br>
+Retourne toutes les citations disponible.</p>
+
+<p>GET | POST /api/all/personnage<br>
+Retourne toutes les citations du personnage.</p>
+
+<p>GET | POST /api/all/livre<br>
+Retourne toutes les citations du livre.</p>
+
+<p>GET | POST /api/all/personnage/livre<br>
+Retourne toutes les citations du personnage dans le livre.</p>
 
 ### Paramètres
   - livre - int - Entre 1 et 6

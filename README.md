@@ -4,29 +4,29 @@
 <h2>Utilisation</h2>
 <h3>Citation aléatoire</h3>
 <p>GET | POST /api/random<br>
-Retourne une citation aléatoire parmis toutes les citations disponible.</p>
+<blockquote>Retourne une citation aléatoire parmis toutes les citations disponible.</blockquote></p>
 <p>GET | POST /api/random/personnage<br>
-Retourne une citation aléatoire parmis toutes les citations du personnage.</p>
+<blockquote>Retourne une citation aléatoire parmis toutes les citations du personnage.</blockquote></p>
 
 <p>GET | POST /api/random/livre<br>
-Retourne une citation aléatoire parmis toutes les citations du livre.</p>
+<blockquote>Retourne une citation aléatoire parmis toutes les citations du livre.</blockquote></p>
 
 <p>GET | POST /api/random/personnage/livre<br>
-Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.</p>
+<blockquote>Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.</blockquote></p>
 
 
 <h3>Toutes les citations</h3>
 <p>GET | POST /api/all<br>
-<blockquote>Retourne toutes les citations disponible.</p><blockquote>
+<blockquote>Retourne toutes les citations disponible.</blockquote></p>
 
 <p>GET | POST /api/all/personnage<br>
-Retourne toutes les citations du personnage.</p>
+<blockquote>Retourne toutes les citations du personnage.</blockquote></p>
 
 <p>GET | POST /api/all/livre<br>
-Retourne toutes les citations du livre.</p>
+<blockquote>Retourne toutes les citations du livre.</blockquote></p>
 
 <p>GET | POST /api/all/personnage/livre<br>
-Retourne toutes les citations du personnage dans le livre.</p>
+<blockquote>Retourne toutes les citations du personnage dans le livre.</blockquote></p>
 
 ### Paramètres
   - livre - int - Entre 1 et 6

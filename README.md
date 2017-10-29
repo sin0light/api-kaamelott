@@ -3,7 +3,8 @@ API de citations de la série française Kaamelott.
 
 ## Utilisation
 ### Citation aléatoire
-GET | POST /api/random    >Retourne une citation aléatoire parmis toutes les citations disponible.
+GET | POST /api/random
+  >Retourne une citation aléatoire parmis toutes les citations disponible.
 
 GET | POST /api/random/personnage
 >Retourne une citation aléatoire parmis toutes les citations du personnage.

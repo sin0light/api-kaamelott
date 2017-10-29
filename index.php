@@ -6,10 +6,15 @@ require 'vendor/autoload.php';
 include 'quotes.php';
 
 // Declaring the router
-$router = new Slim\App();
+$app = new Slim\App();
+
+// Home page
+$app->get('/', function ($request, $response, $args) {
+	$response->write(file_get_contents('./index.html'));
+});
 
 // Random quotes with or without a season or a character wanted
-$router->map(['GET', 'POST'], '/api/{mode}[/{arg1}[/{arg2}]]', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/api/{mode}[/{arg1}[/{arg2}]]', function ($request, $response, $args) {
 	if ($args['mode'] == 'random' || $args['mode'] == 'all') {
 		global $haystackQuotes;
 		// With a season and a character
@@ -100,7 +105,7 @@ $router->map(['GET', 'POST'], '/api/{mode}[/{arg1}[/{arg2}]]', function ($reques
 	return $response->write(json_encode($return));
 });
 
-$router->run();
+$app->run();
 
 
 // Functions

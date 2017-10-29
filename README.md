@@ -37,17 +37,17 @@
 
 <h3>Exemple de réponse :</h3>
 <code>
-  {<br>
-  "status":1,<br>
-  "citation":{<br>
-    "citation":" J'ai toujours dit que je supportais pas les jupes ; mais c'est l'uniforme r\u00e9glementaire, j'y suis pour rien !",<br>
-    "infos":{<br>
-      "auteur":"Alexandre Astier",<br>
-      "acteur":"Bruno Salomone",<br>
-      "personnage":"Caius Camillus",<br>
-      "saison":"Livre I ",<br>
-      "episode":" 56 : Le Dernier Empereur"<br>
-    }<br>
-  }<br>
-  }<br>
+  {</br>
+  "status":1,</br>
+  "citation":{</br>
+    "citation":" J'ai toujours dit que je supportais pas les jupes ; mais c'est l'uniforme r\u00e9glementaire, j'y suis pour rien !",</br>
+    "infos":{</br>
+      "auteur":"Alexandre Astier",</br>
+      "acteur":"Bruno Salomone",</br>
+      "personnage":"Caius Camillus",</br>
+      "saison":"Livre I ",</br>
+      "episode":" 56 : Le Dernier Empereur"</br>
+    }</br>
+  }</br>
+  }</br>
 </code>

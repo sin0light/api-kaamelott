@@ -10,7 +10,7 @@ $app = new Slim\App();
 
 // Home page
 $app->get('/', function ($request, $response, $args) {
-	$response->write(file_get_contents('./index.html'));
+	return $response->write(file_get_contents('./home.html'));
 });
 
 // Random quotes with or without a season or a character wanted

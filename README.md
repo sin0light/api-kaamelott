@@ -36,7 +36,7 @@
 </ul>
 
 <h3>Exemple de réponse :</h3>
-<code>
+```json
   {</br>
   "status":1,</br>
   "citation":{</br>
@@ -50,4 +50,4 @@
     }</br>
   }</br>
   }</br>
-</code>
+```

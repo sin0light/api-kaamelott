@@ -5,23 +5,29 @@ require 'vendor/autoload.php';
 // Including quotes file
 include 'quotes.php';
 
+// Declaring the router
 $router = new Slim\App();
 
+// Test
 $router->get('/hello/{name}', function ($request, $response, $args) {
 	return $response->write("Hello, " . $args['name']);
 });
 
+// Random quotes with or without a season or a character wanted
 $router->map(['GET', 'POST'], '/api/random[/{arg1}[/{arg2}]]', function ($request, $response, $args) {
 	global $haystackQuotes;
+	// With a season and a character
 	if (!empty($args['arg1']) && !empty($args['arg2'])) {
 		$params = getParams1($args['arg1'], $args['arg2']);
-
+		// Checking if the given args are correct
 		if (empty($params['error'])) {
+			// Creating the array with all possibles quotes
 			foreach ($haystackQuotes as $key => $value) {
 				if ($value['infos']['personnage'] == $params['personnage'] && $value['infos']['saison'] == mapLivre($params['livre'])) {
 					$quotes[] = $value;
 				}
 			}
+			// Creating the result
 			if (!empty($quotes)) {
 				$return['status'] = 1;
 				$return['citation'] = $quotes[array_rand($quotes)];
@@ -34,17 +40,48 @@ $router->map(['GET', 'POST'], '/api/random[/{arg1}[/{arg2}]]', function ($reques
 			$return['error'] = $params['error'];
 		}
 
+	// With a season or a character wanted
 	} elseif (!empty($args['arg1'])) {
+		$params = getParams2($args['arg1']);
+		// Checking if the given arg is correct
+		if (empty($params['error'])) {
+			// If the arg is a season
+			if (!empty($params['livre'])) {
+				foreach ($haystackQuotes as $key => $value) {
+					if ($value['infos']['saison'] == mapLivre($params['livre'])) {
+						$quotes[] = $value;
+					}
+				}
+			// If the arg is a character
+			} elseif (!empty($params['personnage'])) {
+				// Creating the array with all possibles quotes
+				foreach ($haystackQuotes as $key => $value) {
+					if ($value['infos']['personnage'] == $params['personnage']) {
+						$quotes[] = $value;
+					}
+				}
+			}
+			// Creating the result
+			if (!empty($quotes)) {
+				$return['status'] = 1;
+				$return['citation'] = $quotes[array_rand($quotes)];
+			} else {
+				$return['status'] = 0;
+				$return['error'] = 'Aucun resultat';
+			}
+		} else {
+			$return['status'] = 0;
+			$return['error'] = $params['error'];
+		}
 
+	// With nothing wanted, only a random quote
 	} else {
-
+		// Getting a random quotes without argument
+		$return['status'] = 1;
+		$return['citation'] = $haystackQuotes[array_rand($haystackQuotes)];
 	}
 
-
-
-
-	// return $response->write(var_dump($haystackQuotes));
-	// return $response->write(is_int($args['arg1']));
+	// Printing the answer in JSON format
 	return $response->write(json_encode($return));
 });
 
@@ -84,6 +121,27 @@ function getParams1($first, $second) {
 		}
 	} else {
 		$ret['error'][] = 'Mauvais argument (2).';
+	}
+
+	return $ret;
+}
+
+function getParams2($first) {
+	global $onlyPersos;
+	if (is_numeric($first)) {
+		if (intval($first) > 0 && intval($first) < 7) {
+			$ret['livre'] = $first;
+		} else {
+			$ret['error'] = 'Saison inconnue.';
+		}
+	} elseif (is_string($first)) {
+		if (in_array($first, $onlyPersos)) {
+			$ret['personnage'] = $first;
+		} else {
+			$ret['error'] = 'Personnage inconnu.';
+		}
+	} else {
+		$ret['error'] = 'Mauvais argument (1).';
 	}
 
 	return $ret;

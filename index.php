@@ -5,8 +5,23 @@ require 'vendor/autoload.php';
 // Including quotes file
 include 'quotes.php';
 
+// Create Your container
+$c = new \Slim\Container();
+
+// Override the default Not Found Handler
+$c['notFoundHandler'] = function ($c) {
+	return function ($request, $response) use ($c) {
+		$return['status'] = 0;
+		$return['error'] = 'Chemin inconnu';
+		return $c['response']
+			->withStatus(404)
+			->withHeader('Content-Type', 'text/html')
+			->write(json_encode($return));
+	};
+};
+
 // Declaring the router
-$app = new Slim\App();
+$app = new Slim\App($c);
 
 // Home page
 $app->get('/', function ($request, $response, $args) {
@@ -67,7 +82,7 @@ $app->map(['GET', 'POST'], '/api/random/personnage/{personnage}', function ($req
 		}
 	} else {
 		$return['status'] = 0;
-		$return['error'] = 'Personnage inconnu.';
+		$return['error'] = 'Personnage inconnu';
 	}
 	// Printing the answer in JSON format
 	return $response->write(json_encode($return));
@@ -94,7 +109,7 @@ $app->map(['GET', 'POST'], '/api/random/livre/{livre}/personnage/{personnage}', 
 			}
 		} else {
 			$return['status'] = 0;
-			$return['error'] = 'Livre inconnu.';
+			$return['error'] = 'Livre inconnu';
 		}
 	} else {
 		$return['status'] = 0;
@@ -132,7 +147,7 @@ $app->map(['GET', 'POST'], '/api/all/livre/{livre}', function ($request, $respon
 		}
 	} else {
 		$return['status'] = 0;
-		$return['error'] = 'Livre inconnu.';
+		$return['error'] = 'Livre inconnu';
 	}
 	// Printing the answer in JSON format
 	return $response->write(json_encode($return));
@@ -158,7 +173,7 @@ $app->map(['GET', 'POST'], '/api/all/personnage/{personnage}', function ($reques
 		}
 	} else {
 		$return['status'] = 0;
-		$return['error'] = 'Personnage inconnu.';
+		$return['error'] = 'Personnage inconnu';
 	}
 	// Printing the answer in JSON format
 	return $response->write(json_encode($return));
@@ -185,11 +200,11 @@ $app->map(['GET', 'POST'], '/api/all/livre/{livre}/personnage/{personnage}', fun
 			}
 		} else {
 			$return['status'] = 0;
-			$return['error'] = 'Livre inconnu.';
+			$return['error'] = 'Livre inconnu';
 		}
 	} else {
 		$return['status'] = 0;
-		$return['error'] = 'Personnage inconnu.';
+		$return['error'] = 'Personnage inconnu';
 	}
 	// Printing the answer in JSON format
 	return $response->write(json_encode($return));

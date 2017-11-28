@@ -1,4 +1,24 @@
 <?php
+// Logging visits
+function logVisit() {
+	$connex = new PDO('pgsql:host=localhost;dbname=counter;port=4352', 'db_compteurs', '$^JWGSfsyVKVZK+R6c_e=HUpFfqqx^mfhv7rBykT3fa$z%r-VLbGq&=Eedy&yqR');
+	if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {    
+		$t = 4;
+	} elseif (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+		$t = 6;
+	}
+	$req = $connex->prepare('INSERT INTO VISITS (refsite, iptype, ip, date, time) VALUES (:s, :ipt, :i, :d, :t);');
+	$req->execute(array(
+		's' => 5,
+		'ipt' => $t,
+		'i' => $_SERVER['REMOTE_ADDR'],
+		'd' => date('m/d/Y'),
+		't' => date('G:i:s')
+	));
+}
+
+logVisit();
+
 // Slims' Ressources
 require 'vendor/autoload.php';
 

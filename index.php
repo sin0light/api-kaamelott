@@ -1,7 +1,4 @@
 <?php
-// Ignore it 
-include 'logging.php';
-
 // Slims' Ressources
 require 'vendor/autoload.php';
 

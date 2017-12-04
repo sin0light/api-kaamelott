@@ -1,23 +1,6 @@
 <?php
-// Logging visits
-function logVisit() {
-	$connex = new PDO('pgsql:host=localhost;dbname=counter;port=4352', 'db_compteurs', '$^JWGSfsyVKVZK+R6c_e=HUpFfqqx^mfhv7rBykT3fa$z%r-VLbGq&=Eedy&yqR');
-	if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {    
-		$t = 4;
-	} elseif (filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-		$t = 6;
-	}
-	$req = $connex->prepare('INSERT INTO VISITS (refsite, iptype, ip, date, time) VALUES (:s, :ipt, :i, :d, :t);');
-	$req->execute(array(
-		's' => 5,
-		'ipt' => $t,
-		'i' => $_SERVER['REMOTE_ADDR'],
-		'd' => date('m/d/Y'),
-		't' => date('G:i:s')
-	));
-}
-
-logVisit();
+// Ignore it 
+include 'logging.php';
 
 // Slims' Ressources
 require 'vendor/autoload.php';
@@ -36,8 +19,7 @@ $c['notFoundHandler'] = function ($c) {
 		$return['error'] = 'Chemin inconnu';
 		return $c['response']
 			->withStatus(404)
-			->withHeader('Content-Type', 'text/html')
-			->write(json_encode($return));
+			->withJson($return);
 	};
 };
 
@@ -52,49 +34,49 @@ $app->get('/', function ($request, $response, $args) {
 // One random quote without filter
 $app->map(['GET', 'POST'], '/api/random', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->random()));
+	return $response->withJson($kaamelott->random());
 });
 
 // One random quote from one designated season
 $app->map(['GET', 'POST'], '/api/random/livre/{livre}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->randomLivre($args['livre'])));
+	return $response->withJson($kaamelott->randomLivre($args['livre']));
 });
 
 // One random quote from one designated character
 $app->map(['GET', 'POST'], '/api/random/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->randomPersonnage($args['personnage'])));
+	return $response->withJson($kaamelott->randomPersonnage($args['personnage']));
 });
 
 // One random quote from one designated season and character
 $app->map(['GET', 'POST'], '/api/random/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->randomLivrePersonnage($args['livre'], $args['personnage'])));
+	return $response->withJson($kaamelott->randomLivrePersonnage($args['livre'], $args['personnage']));
 });
 
 // All the quotes without filter
 $app->map(['GET', 'POST'], '/api/all', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->all()));
+	return $response->withJson($kaamelott->all());
 });
 
 // All the quotes from one designated season
 $app->map(['GET', 'POST'], '/api/all/livre/{livre}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->allLivre($args['livre'])));
+	return $response->withJson($kaamelott->allLivre($args['livre']));
 });
 
 // All the quotes from one designated character
 $app->map(['GET', 'POST'], '/api/all/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->allPersonnage($args['personnage'])));
+	return $response->withJson($kaamelott->allPersonnage($args['personnage']));
 });
 
 // All the quotes from one designated season and character
 $app->map(['GET', 'POST'], '/api/all/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
-	return $response->write(json_encode($kaamelott->allLivrePersonnage($args['livre'], $args['personnage'])));
+	return $response->withJson($kaamelott->allLivrePersonnage($args['livre'], $args['personnage']));
 });
 
 $app->run();

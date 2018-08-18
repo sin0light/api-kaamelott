@@ -1,4 +1,7 @@
 <?php
+// Ignore it 
+include 'logging.php';
+
 // Slims' Ressources
 require 'vendor/autoload.php';
 
@@ -74,6 +77,11 @@ $app->map(['GET', 'POST'], '/api/all/personnage/{personnage}', function ($reques
 $app->map(['GET', 'POST'], '/api/all/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->allLivrePersonnage($args['livre'], $args['personnage']));
+});
+
+// Serve audio files
+$app->get('/sounds/{file}', function ($request, $response, $args) {
+	return $response->write(file_get_contents('./assets/sounds/'.$args['file'].'.mp3'))->withHeader('Content-type', 'audio/mpeg');
 });
 
 $app->run();

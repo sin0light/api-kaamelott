@@ -32,49 +32,49 @@ $app->get('/', function ($request, $response, $args) {
 });
 
 // One random quote without filter
-$app->map(['GET', 'POST'], '/api/random', function ($request, $response, $args) {
+$app->get('/api/random', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->random());
 });
 
 // One random quote from one designated season
-$app->map(['GET', 'POST'], '/api/random/livre/{livre}', function ($request, $response, $args) {
+$app->get('/api/random/livre/{livre}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->randomLivre($args['livre']));
 });
 
 // One random quote from one designated character
-$app->map(['GET', 'POST'], '/api/random/personnage/{personnage}', function ($request, $response, $args) {
+$app->get('/api/random/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->randomPersonnage($args['personnage']));
 });
 
 // One random quote from one designated season and character
-$app->map(['GET', 'POST'], '/api/random/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
+$app->get('/api/random/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->randomLivrePersonnage($args['livre'], $args['personnage']));
 });
 
 // All the quotes without filter
-$app->map(['GET', 'POST'], '/api/all', function ($request, $response, $args) {
+$app->get('/api/all', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->all());
 });
 
 // All the quotes from one designated season
-$app->map(['GET', 'POST'], '/api/all/livre/{livre}', function ($request, $response, $args) {
+$app->get('/api/all/livre/{livre}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->allLivre($args['livre']));
 });
 
 // All the quotes from one designated character
-$app->map(['GET', 'POST'], '/api/all/personnage/{personnage}', function ($request, $response, $args) {
+$app->get('/api/all/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->allPersonnage($args['personnage']));
 });
 
 // All the quotes from one designated season and character
-$app->map(['GET', 'POST'], '/api/all/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
+$app->get('/api/all/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
 	global $kaamelott;
 	return $response->withJson($kaamelott->allLivrePersonnage($args['livre'], $args['personnage']));
 });

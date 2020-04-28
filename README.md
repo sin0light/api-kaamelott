@@ -3,30 +3,30 @@ API de citations de la série française Kaamelott.
 
 ## Utilisation
 ### Citation aléatoire
-GET | POST /api/random
+GET /api/random
 >Retourne une citation aléatoire parmis toutes les citations disponible.
 
-GET | POST /api/random/personnage/`personnage`
+GET /api/random/personnage/`personnage`
 >Retourne une citation aléatoire parmis toutes les citations du personnage.
 
-GET | POST /api/random/livre/`livre`
+GET /api/random/livre/`livre`
 >Retourne une citation aléatoire parmis toutes les citations du livre.
 
-GET | POST /api/random/livre/`livre`/personnage/`personnage`
+GET /api/random/livre/`livre`/personnage/`personnage`
 >Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.
 
 
 ### Toutes les citations
-GET | POST /api/all
+GET /api/all
 >Retourne toutes les citations disponible.
 
-GET | POST /api/all/personnage/`personnage`
+GET /api/all/personnage/`personnage`
 >Retourne toutes les citations du personnage.
   
-GET | POST /api/all/livre/`livre`
+GET /api/all/livre/`livre`
 >Retourne toutes les citations du livre.
   
-GET | POST /api/all/livre/`livre`/personnage/`personnage`
+GET /api/all/livre/`livre`/personnage/`personnage`
 >Retourne toutes les citations du personnage dans le livre.
 
 ### Paramètres
@@ -104,3 +104,9 @@ GET | POST /api/all/livre/`livre`/personnage/`personnage`
 }
 }
 ```
+
+### Soundbox
+
+GET /sounds/`filename`
+>Retourne le fichier .mp3. Noms des fichiers dans [sounds](/assets/sounds/)
+

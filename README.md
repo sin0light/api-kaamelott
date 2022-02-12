@@ -1,37 +1,101 @@
+
 # API citations Kaamelott
 API de citations de la série française Kaamelott.
 
-## Utilisation
-### Citation aléatoire
-GET /api/random
->Retourne une citation aléatoire parmis toutes les citations disponible.
+# Introduction
+L'API de citations Kaamelott est une API entièrement publique et ouverte à tous. L’API Kaamelott est une API JSON RESTful avec laquelle vous pouvez interagir à partir de n’importe quel langage avec une bibliothèque HTTP.
 
-GET /api/random/personnage/`personnage`
->Retourne une citation aléatoire parmis toutes les citations du personnage.
+## Base URL
+L'URL de base pour toute l'API est `https://kaamelott.chaudie.re/api`. Si jamais lors d'une requête vous obtenez cette réponse:  
+```json
+{
+  "status": 0,
+  "error": "Chemin inconnu"
+}
+```  
 
-GET /api/random/livre/`livre`
->Retourne une citation aléatoire parmis toutes les citations du livre.
+Vérifiez d'abord l'URL de base puis votre path. La documentation en dessous se base sur cette URL pour chaque requête.
 
-GET /api/random/livre/`livre`/personnage/`personnage`
->Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.
+## Réponses
+### Succès
+Un status `1` sera retourné, ainsi que le body contenant la réponse.  
+```json
+{
+  "status":1,
+  "citation":{
+    "citation":" J'ai toujours dit que je supportais pas les jupes ;   mais c'est l'uniforme r\u00e9glementaire, j'y suis pour rien !",
+    "infos":{
+      "auteur":"Alexandre Astier",
+      "acteur":"Bruno Salomone",
+      "personnage":"Caius Camillus",
+      "saison":"Livre I ",
+      "episode":" 56 : Le Dernier Empereur"
+    }
+  }
+}
+```  
+### Erreur
+Un status `0` sera retourné, ainsi qu'un message d'erreur correspondant.  
+```json
+{
+  "status": 0,
+  "error": "Chemin inconnu"
+}
+```
 
+# Utilisation
+## Citations
+`GET /random`  
+Retourne une citation aléatoire parmis toutes les citations disponibles.
 
-### Toutes les citations
-GET /api/all
->Retourne toutes les citations disponible.
+`GET /all`  
+Retourne toutes les citations disponible. **776** citations sont disponibles.
 
-GET /api/all/personnage/`personnage`
->Retourne toutes les citations du personnage.
+## Personnage
+
+`GET /random/personnage/:personnage`  
+Retourne une citation aléatoire parmis toutes les citations du personnage.
+
+`GET /all/personnage/:personnage`  
+Retourne toutes les citations du personnage.
+
+**Paramètres**
+| Nom | Type | Description  |
+| - | -|  - |
+| personnage | String |  Nom du personnage dont vous souhaitez les citations. [Voir liste des personnages disponibles](#liste-des-personnages)
+
+## Livre
+`GET /random/livre/:livre`  
+Retourne une citation aléatoire parmis toutes les citations du livre.
+
+`GET /random/livre/:livre/personnage/:personnage`  
+Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.  
+
+`GET /all/livre/:livre`  
+Retourne toutes les citations du livre.
   
-GET /api/all/livre/`livre`
->Retourne toutes les citations du livre.
-  
-GET /api/all/livre/`livre`/personnage/`personnage`
->Retourne toutes les citations du personnage dans le livre.
+`GET /all/livre/:livre/personnage/:personnage`  
+Retourne toutes les citations du personnage dans le livre.
 
-### Paramètres
-  - `livre` - int - Entre 1 et 6
-  - `personnage` - string - Présent dans la liste suivante :
+**Paramètres**
+| Nom | Type | Description |
+| - | -|  - |
+| livre | Integer |  Chiffre entre 1 et 6. Numéro du livre dont vous souhaitez les citations.
+| personnage | String | Nom du personnage dont vous souhaitez les citations. [Voir liste des personnages disponibles](#liste-des-personnages)
+
+## Soundbox
+
+`GET /sounds/:filename`  
+Retourne le fichier .mp3. 
+
+**Paramètres**
+| Nom | Type | Description |
+| - | -|  - |
+| filename | String |  Noms des fichiers dans [sounds](/assets/sounds/)
+
+
+
+# Liste des personnages
       - Angharad
       - Anna
       - Appius Manilius
@@ -87,26 +151,4 @@ GET /api/all/livre/`livre`/personnage/`personnage`
       - Venec
       - Ygerne
       - Yvain
-
-### Exemple de réponse :
-```json
-{
-"status":1,
-"citation":{
-  "citation":" J'ai toujours dit que je supportais pas les jupes ; mais c'est l'uniforme r\u00e9glementaire, j'y suis pour rien !",
-  "infos":{
-    "auteur":"Alexandre Astier",
-    "acteur":"Bruno Salomone",
-    "personnage":"Caius Camillus",
-    "saison":"Livre I ",
-    "episode":" 56 : Le Dernier Empereur"
-  }
-}
-}
-```
-
-### Soundbox
-
-GET /sounds/`filename`
->Retourne le fichier .mp3. Noms des fichiers dans [sounds](/assets/sounds/)
 

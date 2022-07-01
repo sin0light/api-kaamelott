@@ -89,6 +89,30 @@ $controllerRandomSeason = function ($request, $response, $service, $app) {
 };
 
 
+/**
+ * Return all quotes from a specific season
+ * @var Callable controllerAllSeason
+ * @route GET /api/all/livre/[:season]
+ */
+$controllerAllSeason = function ($request, $response, $service, $app) {
+	if (is_numeric($request->season)) {
+		$season = $app->db->select('SEASONS', NULL, NULL, ['SEASONS'=>['seasons_num'=>$request->season]]);
+		if (count($season) == 1) {
+			$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['SEASONS'=>['seasons_id'=>$season[0]['seasons_id']]]);
+			$all = [];
+			foreach ($resDB as $value) {
+				$all[] = formatQuoteResponse($value);
+			}
+			$response->json($all);
+		} else {
+			$response->json(forgeErrorResponse(400, 'Unknown season.'));
+		}
+	} else {
+		$response->json(forgeErrorResponse(400, 'No season provided.'));
+	}
+};
+
+
 
 /**
  * MISC

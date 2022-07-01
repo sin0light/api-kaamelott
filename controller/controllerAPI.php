@@ -5,7 +5,19 @@
  * @route GET /api/random
  */
 $controllerRandom = function ($request, $response, $service, $app) {
-	// TODO
+	$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], NULL, 1);
+	$response->json(formatQuoteResponse($resDB[0]));
+};
+
+
+/**
+ * Return one random quote
+ * @var Callable controllerRandom
+ * @route GET /api/random
+ */
+$controllerRandomCharacter = function ($request, $response, $service, $app) {
+	$resDB = $app->db->customSelect('SELECT * FROM QUOTES TABLESAMPLE SYSTEM(SELECT 1/COUNT(*) FROM QUOTES) LIMIT 1;');
+	$response->json(formatQuoteResponse($resDB[0]));
 };
 
 
@@ -13,12 +25,13 @@ $controllerRandom = function ($request, $response, $service, $app) {
 /**
  * MISC
  */
+
 /**
  * Format response as a JSON document
  * @param array $quote Array with the DB result of the quote selection
- * @return string The JSON encoded document
+ * @return stdClass The forged object
  */
-function formatQuoteResponse(array $quote) : string {
+function formatQuoteResponse(array $quote) : stdClass {
 	$return = new stdClass;
 	$return->status = 1;
 	$return->citation = new stdClass;
@@ -30,5 +43,5 @@ function formatQuoteResponse(array $quote) : string {
 	$return->citation->infos->saison = $quote['seasons_name'];
 	$return->citation->infos->episode = $quote['episodes_name'];
 
-	return json_encode($return);
+	return $return;
 }

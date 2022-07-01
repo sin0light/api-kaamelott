@@ -1,6 +1,7 @@
 <?php
 
-$rawQuotes ="citation=Hé ben, si un jour j'oublie que je suis boniche, vous serez gentil de me le rappeler !
+$rawQuotes = <<<EOT
+citation=Hé ben, si un jour j'oublie que je suis boniche, vous serez gentil de me le rappeler !
 |acteur=Vanessa Guedj
 |auteur=Alexandre Astier
 |série=Kaamelott
@@ -189,7 +190,7 @@ $rawQuotes ="citation=Hé ben, si un jour j'oublie que je suis boniche, vous ser
 |saison=Livre I
 |épisode=59
 |title=La jupe de Calogrenant}}
-{{citation=(En parlant à Arthur d'un cadeau offert par un clan saxon) Mais c'est un petit mâle, il s'appelle ... \"Ferme ta gueule\", c'est que quand il est né il arrêtait pas de couiner...
+{{citation=(En parlant à Arthur d'un cadeau offert par un clan saxon) Mais c'est un petit mâle, il s'appelle ... "Ferme ta gueule", c'est que quand il est né il arrêtait pas de couiner...
 |auteur=Alexandre Astier
 |acteur=Stéphane Margot
 |série=Kaamelott
@@ -344,7 +345,7 @@ Mais Conran, il doit y avoir trois cahutes sur la plage, ils sont une dizaine à
 |saison=Livre V
 |épisode=22
 |title=La promesse}}
-{{citation=J'ai dit \"elle aussi\" ? […] Oh, ça m'étonne, ça... Vous êtes sûr que j'ai pas dit \"elle est sympa\" ?
+{{citation=J'ai dit "elle aussi" ? […] Oh, ça m'étonne, ça... Vous êtes sûr que j'ai pas dit "elle est sympa" ?
 |auteur=Alexandre Astier
 |acteur=Audrey Fleurot
 |série=Kaamelott
@@ -857,7 +858,7 @@ Pfff... je n'sais rien...
 |saison=Livre VI
 |épisode=8
 |title=Lacrimosa}}
-{{citation=Ben dis donc, j'sais pas c'que c'est, \"la pire\", mes p'tits cousins, mais j'peux vous garantir que, vu d'ici, ça fout les boules, hein... Ouuuh... Non, parce que, quand il a dit euh... plusieurs options, j'ai fait toute une série de p'tits pets comme ça, pou, pou, pou...
+{{citation=Ben dis donc, j'sais pas c'que c'est, "la pire", mes p'tits cousins, mais j'peux vous garantir que, vu d'ici, ça fout les boules, hein... Ouuuh... Non, parce que, quand il a dit euh... plusieurs options, j'ai fait toute une série de p'tits pets comme ça, pou, pou, pou...
 |auteur=Alexandre Astier
 |acteur=Manu Payet
 |série=Kaamelott
@@ -878,7 +879,7 @@ Pfff... je n'sais rien...
 |saison=Livre I
 |épisode=59
 |title=La Visite d'Ygerne}}
-{{citation=(En parlant d'Arthur et en le regardant d'un air narquois) Au cas où il aurait une petite \"faim-faim\"!?
+{{citation=(En parlant d'Arthur et en le regardant d'un air narquois) Au cas où il aurait une petite "faim-faim"!?
 |auteur=Lionnel Astier
 |acteur=Josée Drevon
 |série=Kaamelott
@@ -1311,7 +1312,7 @@ C'est bon vous pouvez débarrasser...
 |série=Kaamelott
 |saison=Livre II
 |épisode=Neiges Éternelles }}
-{{citation=Eh bien, c'est l'histoire d'un petit ourson qui s'appelle… Arthur. Et y'a une fée, un jour, qui vient voir le petit ourson et qui lui dit : Arthur tu vas partir à la recherche du Vase Magique. Et elle lui donne une épée hmm… magique (ouais, parce qu'y a plein de trucs magiques dans l'histoire, bref) alors le petit ourson il se dit : \"Heu, chercher le Vase Magique ça doit être drôlement difficile, alors il faut que je parte dans la forêt pour trouver des amis pour m'aider.\" Alors il va voir son ami Lancelot… le cerf (parce que le cerf c'est majestueux comme ça), heu, Bohort le faisan et puis Léodagan… heu… l'ours, ouais c'est un ours aussi, c'est pas tout à fait le même ours mais bon. Donc Léodagan qui est le père de la femme du petit ourson, qui s'appelle Guenièvre la truite… non, non, parce que c'est la fille de… non c'est un ours aussi puisque c'est la fille de l'autre ours, non parce qu'après ça fait des machins mixtes, en fait un ours et une truite… non en fait ça va pas. Bref, sinon y'a Gauvain le neveu du petit ourson qui est le fils de sa sœur Anna, qui est restée à Tintagel avec sa mère Igerne la… bah non, ouais du coup je suis obligé de foutre des ours de partout sinon on pige plus rien dans la famille… Donc c'est des ours, en gros, enfin bref… Ils sont tous là et donc Petit Ourson il part avec sa troupe à la recherche du Vase Magique. Mais il le trouve pas, il le trouve pas parce qu'en fait pour la plupart d'entre eux c'est… c'est des nazes : ils sont hyper mous, ils sont bêtes, en plus y'en a qu'ont la trouille. Donc il décide de les faire bruler dans une grange pour s'en débarrasser… Donc la fée revient pour lui dire : \"Attention petit ourson, il faut être gentil avec ses amis de la forêt\" quand même c'est vrai, et du coup Petit Ourson il lui met un taquet dans la tête à la fée, comme ça : \"BAH !\". Alors la fée elle est comme ça et elle s'en va… et voilà et en fait il trouve pas le vase. En fait il est… il trouve pas… et Petit Ourson il fait de la dépression et tous les jours il se demande s'il va se tuer ou… pas…
+{{citation=Eh bien, c'est l'histoire d'un petit ourson qui s'appelle… Arthur. Et y'a une fée, un jour, qui vient voir le petit ourson et qui lui dit : Arthur tu vas partir à la recherche du Vase Magique. Et elle lui donne une épée hmm… magique (ouais, parce qu'y a plein de trucs magiques dans l'histoire, bref) alors le petit ourson il se dit : "Heu, chercher le Vase Magique ça doit être drôlement difficile, alors il faut que je parte dans la forêt pour trouver des amis pour m'aider." Alors il va voir son ami Lancelot… le cerf (parce que le cerf c'est majestueux comme ça), heu, Bohort le faisan et puis Léodagan… heu… l'ours, ouais c'est un ours aussi, c'est pas tout à fait le même ours mais bon. Donc Léodagan qui est le père de la femme du petit ourson, qui s'appelle Guenièvre la truite… non, non, parce que c'est la fille de… non c'est un ours aussi puisque c'est la fille de l'autre ours, non parce qu'après ça fait des machins mixtes, en fait un ours et une truite… non en fait ça va pas. Bref, sinon y'a Gauvain le neveu du petit ourson qui est le fils de sa sœur Anna, qui est restée à Tintagel avec sa mère Igerne la… bah non, ouais du coup je suis obligé de foutre des ours de partout sinon on pige plus rien dans la famille… Donc c'est des ours, en gros, enfin bref… Ils sont tous là et donc Petit Ourson il part avec sa troupe à la recherche du Vase Magique. Mais il le trouve pas, il le trouve pas parce qu'en fait pour la plupart d'entre eux c'est… c'est des nazes : ils sont hyper mous, ils sont bêtes, en plus y'en a qu'ont la trouille. Donc il décide de les faire bruler dans une grange pour s'en débarrasser… Donc la fée revient pour lui dire : "Attention petit ourson, il faut être gentil avec ses amis de la forêt" quand même c'est vrai, et du coup Petit Ourson il lui met un taquet dans la tête à la fée, comme ça : "BAH !". Alors la fée elle est comme ça et elle s'en va… et voilà et en fait il trouve pas le vase. En fait il est… il trouve pas… et Petit Ourson il fait de la dépression et tous les jours il se demande s'il va se tuer ou… pas…
 |auteur=Alexandre Astier
 |acteur=Alexandre Astier
 |série=Kaamelott
@@ -1805,7 +1806,7 @@ Moi aussi, je ne me sens pas dans mon assiette, j'ai jamais beaucoup aimé les t
 |saison=Livre III
 |épisode=23
 |title=Le dialogue de paix II}}
-{{citation=Non posso volo, no tépo mayo. Un posso volo, tandolon toulo. Tamasso (pet) tanlamalasso. Tamasso (pet) les oiseaux petits (sur l'air de \"À la volette\")
+{{citation=Non posso volo, no tépo mayo. Un posso volo, tandolon toulo. Tamasso (pet) tanlamalasso. Tamasso (pet) les oiseaux petits (sur l'air de "À la volette")
 |acteur=Guillaume Briat
 |auteur=Alexandre Astier
 |série=Kaamelott
@@ -2073,7 +2074,7 @@ J'ai la vigueur d'un insecte !
 |saison=Livre III
 |épisode=86
 |title=La Chevalerie}}
-{{citation=Nous sommes jeunes, nous marchons à pieds… J'opterai donc pour un surnom en rapport : \"les Petits Pédestres\".
+{{citation=Nous sommes jeunes, nous marchons à pieds… J'opterai donc pour un surnom en rapport : "les Petits Pédestres".
 |auteur=Alexandre Astier
 |acteur=Aurélien Portehaut
 |série=Kaamelott
@@ -2115,7 +2116,7 @@ Guenièvre: Mais avant ma vie, c'était de la merde vous entendez?!  Recevoir le
 |acteur=Alexandre Astier et Anne Girouard
 |série=Kaamelott
 |saison=Livre I
-|épisode=25 : \"La pâte d'amande\"}}
+|épisode=25 : "La pâte d'amande"}}
   
 {{citation=(À Arthur et Lancelot) De toute façon, Calogrenant, c'est un abruti !
 |auteur=Alexandre Astier
@@ -2798,7 +2799,7 @@ Ouais. Ou alors le mec qu'on dirait qu'il marche normalement mais en fait il mar
 |saison=Livre II
 |épisode=28
 |title=L'ivresse}}
-{{citation=(À Arthur) Non mais je sais pas comment c'est arrivé sur le tapis… On parlait d'esclavage, je crois. Les autres disaient que vous l'aboliriez sans doute dans l'avenir ; moi j'ai dit que c'est parce que vous aviez pas le courage de l'faire maintenant ; il y en a un qui m'a dit qu'il fallait pas que je me prenne pour le roi et voilà ! (un peu gêné) Alors j'ai dit… \"Le roi je l'emmerde\"… Mais c'était dit sans méchanceté.
+{{citation=(À Arthur) Non mais je sais pas comment c'est arrivé sur le tapis… On parlait d'esclavage, je crois. Les autres disaient que vous l'aboliriez sans doute dans l'avenir ; moi j'ai dit que c'est parce que vous aviez pas le courage de l'faire maintenant ; il y en a un qui m'a dit qu'il fallait pas que je me prenne pour le roi et voilà ! (un peu gêné) Alors j'ai dit… "Le roi je l'emmerde"… Mais c'était dit sans méchanceté.
 |auteur=Alexandre Astier
 |acteur=Thomas Cousseau
 |série=Kaamelott
@@ -2854,7 +2855,7 @@ Ouais. Ou alors le mec qu'on dirait qu'il marche normalement mais en fait il mar
 |saison=Livre IV
 |épisode=03
 |title=Raisons et sentiments}}
-{{citation=Pour tout vous dire, je crois pas que ce soit bon pour mon autorité que mes soldats apprennent que je suis \"une grosse pucelle\" !
+{{citation=Pour tout vous dire, je crois pas que ce soit bon pour mon autorité que mes soldats apprennent que je suis "une grosse pucelle" !
 |auteur=Alexandre Astier
 |acteur=Thomas Cousseau
 |série=Kaamelott
@@ -3139,7 +3140,7 @@ Hein ? Ah non, là, je laisse tout.
 |série=Kaamelott
 |saison=Livre IV
 |épisode=La tarte aux fraises}}
-{{citation=Ben moi en général, je lui réponds \"merde\". En principe ça colle avec tout.
+{{citation=Ben moi en général, je lui réponds "merde". En principe ça colle avec tout.
 |auteur=Alexandre Astier
 |acteur=Lionnel Astier
 |série=Kaamelott
@@ -3323,7 +3324,7 @@ Parce que bon, mettons là heu... on s'pose, on analyse le truc. Le crin-crin ç
 |série=Kaamelott
 |saison=Livre IV
 |épisode=Dagonet et le Cadastre}}
-{{citation=[À Lancelot]  Ah ! À ce propos, je dois vous avouer que j'ai longtemps réflechi à savoir comment vous deviez m'appeler. [...] Éh oui ! Parce que vous êtes pas, à proprement parler, un de mes sujets. Vous êtes pas sous mes ordres non plus. \"Sire\" c'est quand même un peu ampoulé. Alors j'ai pensé à beaucoup de choses. \"Loth\", \"Seigneur\", \"Monsieur\"... Je me suis même demandé si vous deviez pas m'appeler \"vieille branche\", \"mon p'tit pote\" ou \"canaillou\".
+{{citation=[À Lancelot]  Ah ! À ce propos, je dois vous avouer que j'ai longtemps réflechi à savoir comment vous deviez m'appeler. [...] Éh oui ! Parce que vous êtes pas, à proprement parler, un de mes sujets. Vous êtes pas sous mes ordres non plus. "Sire" c'est quand même un peu ampoulé. Alors j'ai pensé à beaucoup de choses. "Loth", "Seigneur", "Monsieur"... Je me suis même demandé si vous deviez pas m'appeler "vieille branche", "mon p'tit pote" ou "canaillou".
 |auteur=Alexandre Astier
 |acteur=François Rollin
 |série=Kaamelott
@@ -3396,7 +3397,7 @@ Parce que bon, mettons là heu... on s'pose, on analyse le truc. Le crin-crin ç
 |série=Kaamelott
 |saison=Livre V
 |épisode=Vae Soli !}}
-{{citation=(A Galessin : \"Le rapport entre quoi et quoi ?\") Entre Excalibur et le fromage gratiné. Réponse: Aucun. C'est une métaphore moisie tiraillée entre votre stupidité d'ordre général et votre surprenante inaptitude à utiliser les métaphores...
+{{citation=(A Galessin : "Le rapport entre quoi et quoi ?") Entre Excalibur et le fromage gratiné. Réponse: Aucun. C'est une métaphore moisie tiraillée entre votre stupidité d'ordre général et votre surprenante inaptitude à utiliser les métaphores...
 |auteur=Alexandre Astier
 |acteur=François Rollin
 |série=Kaamelott
@@ -3420,7 +3421,7 @@ Parce que bon, mettons là heu... on s'pose, on analyse le truc. Le crin-crin ç
 |série=Kaamelott
 |saison=Livre V
 |épisode=Les Dauphins}}
-{{citation=Euh, \"Vous êtes là.\", c'est-à-dire qu'il est surpris lui-même, ça lui viendrait pas à l'idée de raccorder le fait qu'on est là avec le fait qu'il nous l'a demandé.
+{{citation=Euh, "Vous êtes là.", c'est-à-dire qu'il est surpris lui-même, ça lui viendrait pas à l'idée de raccorder le fait qu'on est là avec le fait qu'il nous l'a demandé.
 |auteur=Alexandre Astier
 |acteur=François Rollin
 |série=Kaamelott
@@ -3523,7 +3524,7 @@ Oui, alors, pourquoi ? Pourquoi trahir sans arrêt les gens avec qui je collabor
 |série=Kaamelott
 |saison=Livre VI
 |épisode=Lacrimosa}}
-{{citation=\"Mundi placet et spiritus minima\", ça n'a aucun sens mais on pourrait très bien imaginer une traduction du type : \"Le roseau plie, mais ne cède... qu'en cas de pépin\" ce qui ne veut rien dire non plus.
+{{citation="Mundi placet et spiritus minima", ça n'a aucun sens mais on pourrait très bien imaginer une traduction du type : "Le roseau plie, mais ne cède... qu'en cas de pépin" ce qui ne veut rien dire non plus.
 |auteur=Alexandre Astier
 |acteur=François Rollin
 |série=Kaamelott
@@ -3570,7 +3571,7 @@ Oui, alors, pourquoi ? Pourquoi trahir sans arrêt les gens avec qui je collabor
 |saison=Livre II
 |épisode=26
 |title=Corpore sano}}
-{{citation=Moi, une fois, j'étais soûl comme cochon, je me suis fait tatouer \"J'aime le raisin de table\" sur la miche droite, et ça y est toujours !
+{{citation=Moi, une fois, j'étais soûl comme cochon, je me suis fait tatouer "J'aime le raisin de table" sur la miche droite, et ça y est toujours !
 |auteur=Alexandre Astier
 |acteur=Christian Bujeau
 |série=Kaamelott
@@ -3598,7 +3599,7 @@ Oui, alors, pourquoi ? Pourquoi trahir sans arrêt les gens avec qui je collabor
 |saison=Livre III
 |épisode=90
 |title=L'assemblée des Rois 2e partie}}
-{{citation=(Sur l'air de \"À la Volette\") Le bon roi Arthur est une p'tite tapette. Le bon roi Arthur est une p'tite tapette. Est une p'tite à la volette, est une p'tite à la volette, est une p'tite tapette.
+{{citation=(Sur l'air de "À la Volette") Le bon roi Arthur est une p'tite tapette. Le bon roi Arthur est une p'tite tapette. Est une p'tite à la volette, est une p'tite à la volette, est une p'tite tapette.
 |auteur=Alexandre Astier
 |acteur=Christian Bujeau
 |série=Kaamelott
@@ -3818,7 +3819,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre IV
 |épisode=12
-|title=Le privilégié\"}}
+|title=Le privilégié"}}
 {{citation=Un arbre ça pousse, c'est là où vous pourrez faire la différence: le camouflage il pousse pas !
 |auteur=Alexandre Astier
 |acteur=Jacques Chambon
@@ -3866,7 +3867,7 @@ Putain, il est fort ce con.
 |saison=Livre VI
 |épisode=7
 |title=Arturus rex}}
-{{citation=Si on faisait le coup du bouclier humain ?[...] Par exemple, Sire, Léodagan et moi on fait semblant de vous prendre en otage : on vous met une dague sous le cou et on traverse le camp adverse en gueulant : \"Bougez pas, bougez pas ou on bute le roi!\"...
+{{citation=Si on faisait le coup du bouclier humain ?[...] Par exemple, Sire, Léodagan et moi on fait semblant de vous prendre en otage : on vous met une dague sous le cou et on traverse le camp adverse en gueulant : "Bougez pas, bougez pas ou on bute le roi!"...
 |auteur=Alexandre Astier - Simon Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -3926,7 +3927,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre I
 |épisode=Le Chaudron Rutilant}}
-{{citation=Ben si, si c'est l'même volume sonore, on dit \"équidistant\" [...] S'ils sont équidistants en même temps que nous, on peut repérer le dragon par rapport à une certaine distance. Si le dragon s'éloigne, on s'ra équidistant, mais ça s'ra vachement moins précis et... et pas réciproque.
+{{citation=Ben si, si c'est l'même volume sonore, on dit "équidistant" [...] S'ils sont équidistants en même temps que nous, on peut repérer le dragon par rapport à une certaine distance. Si le dragon s'éloigne, on s'ra équidistant, mais ça s'ra vachement moins précis et... et pas réciproque.
 |auteur=Alexandre Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -3950,7 +3951,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre I
 |épisode=La Coccinelle de Madenn}}
-{{citation=(À Arthur et Lancelot) Une fois, à une exécution, je m'approche d'une fille. Pour rigoler, je lui fais : {{\" \"|Vous êtes de la famille du pendu ?}}... C'était sa sœur. Bonjour l'approche !
+{{citation=(À Arthur et Lancelot) Une fois, à une exécution, je m'approche d'une fille. Pour rigoler, je lui fais : {{" "|Vous êtes de la famille du pendu ?}}... C'était sa sœur. Bonjour l'approche !
 |auteur=Alexandre Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -4114,7 +4115,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre III
 |épisode=La menace fantôme}}
-{{citation=Le code c'est \"le code\" ? Ça va, ils se sont pas trop cassé le bonnet, pour l'trouver celui-là !
+{{citation=Le code c'est "le code" ? Ça va, ils se sont pas trop cassé le bonnet, pour l'trouver celui-là !
 |auteur=Alexandre Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -4138,7 +4139,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre III
 |épisode=L'Etudiant}}
-{{citation=Ah, mais c'est de là que ça vient ! Quand on dit \"ça va comme sur des roulettes\". En fait ça veut dire qu'le mec il peut balancer un morceau de rocher comme une catapulte, il continue quand même d'avancer d'façon mobile. 
+{{citation=Ah, mais c'est de là que ça vient ! Quand on dit "ça va comme sur des roulettes". En fait ça veut dire qu'le mec il peut balancer un morceau de rocher comme une catapulte, il continue quand même d'avancer d'façon mobile. 
 |auteur=Alexandre Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -4282,7 +4283,7 @@ Putain, il est fort ce con.
 |série=Kaamelott
 |saison=Livre V
 |épisode=La Promesse}}
-{{citation=Je vais vous poser une série de questions. Vous répondez par oui, non, ou Zbradaraldjan. Ok c'est parti : où se trouve l'oiseau ?... Allez c'est facile ça. Trouve pas ? Bon tant pis. C'était \"sur la branche\". Eh oui, y a des pièges.
+{{citation=Je vais vous poser une série de questions. Vous répondez par oui, non, ou Zbradaraldjan. Ok c'est parti : où se trouve l'oiseau ?... Allez c'est facile ça. Trouve pas ? Bon tant pis. C'était "sur la branche". Eh oui, y a des pièges.
 |auteur=Alexandre Astier
 |acteur=Franck Pitiot
 |série=Kaamelott
@@ -4786,7 +4787,7 @@ Comparés aux vôtres, ils sont pourris mes rêves, ou pas?
 |saison=Livre VI
 |épisode=5
 |title=Dux bellorum}}
-{{citation=Vous préférez \"Bohort le jeune\" ou \"Bohort l'ami du raisin\" ? Parce que j'avais réfléchi à la seconde possibilité, ça fait plus fruité !
+{{citation=Vous préférez "Bohort le jeune" ou "Bohort l'ami du raisin" ? Parce que j'avais réfléchi à la seconde possibilité, ça fait plus fruité !
 |acteur=Pascal Vincent
 |auteur=Alexandre Astier
 |série=Kaamelott
@@ -4991,7 +4992,7 @@ Ben oui c'est une rime triple : Blanche et sèche, poitrine et prairie de notre 
 |épisode=97
 |title=Trois Cent Soixante Degrés}}
 {{citation=[Arthur: Pour faire simple: on peut douter de tout sauf de la nécessité de se trouver du côté des opprimés]
-Ah bon! C'est marrant parce que mon père, il a une phrase presque pareil: \"On peut douter de tout sauf de la nécessité de se trouver du côté de celui qui a le pognon\".
+Ah bon! C'est marrant parce que mon père, il a une phrase presque pareil: "On peut douter de tout sauf de la nécessité de se trouver du côté de celui qui a le pognon".
 |auteur=Alexandre Astier
 |acteur=Simon Astier
 |série=Kaamelott
@@ -5144,4 +5145,5 @@ Ah bon! C'est marrant parce que mon père, il a une phrase presque pareil: \"On 
 |série=Kaamelott
 |saison=Livre V
 |épisode=21
-|title=Aux Yeux De Tous III";
+|title=Aux Yeux De Tous III
+EOT;

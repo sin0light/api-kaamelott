@@ -175,7 +175,7 @@ $controllerSounds = function ($request, $response, $service, $app) {
 
 /**
  * Return all characters
- * @var Callable controllerAllCharacters
+ * @var Callable controllerCharactersAll
  * @route GET /api/personnage/all
  */
 $controllerCharactersAll = function ($request, $response, $service, $app) {
@@ -185,6 +185,23 @@ $controllerCharactersAll = function ($request, $response, $service, $app) {
 	$return->characters = [];
 	foreach ($resDB as $value) {
 		$return->characters[] = $value['characters_name'];
+	}
+	$response->json($return);
+};
+
+
+/**
+ * Return all authors
+ * @var Callable controllerAuthorsAll
+ * @route GET /api/authors/all
+ */
+$controllerAuthorsAll = function ($request, $response, $service, $app) {
+	$resDB = $app->db->select('AUTHORS', ['authors_name'=>'ASC']);
+	$return = new stdClass;
+	$return->status = 1;
+	$return->authors = [];
+	foreach ($resDB as $value) {
+		$return->authors[] = $value['authors_name'];
 	}
 	$response->json($return);
 };

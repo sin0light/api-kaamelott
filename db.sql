@@ -33,8 +33,7 @@ CREATE TABLE QUOTES (
 	quotes_text VARCHAR NOT NULL,
 	quotes_refepisode INT NOT NULL REFERENCES EPISODES(episodes_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	quotes_refcharacter INT NOT NULL REFERENCES CHARACTERS(characters_id) ON UPDATE CASCADE ON DELETE CASCADE,
-	quotes_counter_random INT NOT NULL DEFAULT 0,
-	quotes_counter_chosen INT NOT NULL DEFAULT 0
+	quotes_counter_random INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE SOUNDS (

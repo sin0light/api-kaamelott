@@ -148,6 +148,25 @@ $controllerAllSeasonCharacter = function ($request, $response, $service, $app) {
 };
 
 
+/**
+ * Return a sound file 
+ * @var Callable controllerSounds
+ * @route GET /api/sounds/[:filename]
+ */
+$controllerSounds = function ($request, $response, $service, $app) {
+	if (!empty($request->filename)) {
+		$knownFiles = scandir('./assets/sounds');
+		if (in_array($request->filename, $knownFiles)) {
+			$response->file('./assets/sounds/'.$request->filename);
+		} else {
+			$response->json(forgeErrorResponse(400, 'Unknown sound file.'));
+		}
+	} else {
+		$response->json(forgeErrorResponse(400, 'No sound file provided.'));
+	}
+};
+
+
 
 /**
  * MISC

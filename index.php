@@ -49,7 +49,7 @@ $router->respond('GET', '/api/random', $controllerRandom);
 $router->respond('GET', '/api/random/personnage/[:character]', $controllerRandomCharacter);
 // By season
 $router->respond('GET', '/api/random/livre/[i:season]', $controllerRandomSeason);
-// // By season and character
+// By season and character
 $router->respond('GET', '/api/random/livre/[i:season]/personnage/[:character]', $controllerRandomSeasonCharacter);
 
 // All quotes
@@ -61,8 +61,8 @@ $router->respond('GET', '/api/all/livre/[i:season]', $controllerAllSeason);
 // By season and character
 $router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $controllerAllSeasonCharacter);
 
-// // Sounds
-// $router->respond('GET', '/api/sounds/[:filename]', $controllerSounds);
+// Sounds
+$router->respond('GET', '/api/sounds/[:filename]', $controllerSounds);
 
 
 // Catch errors

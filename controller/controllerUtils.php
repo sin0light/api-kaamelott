@@ -34,3 +34,17 @@ $controllerErrors = function($code, $router, $response) {
 /**
  * MISC
  */
+
+/**
+ * Forge the object containing all information regarding a request error.
+ * @param int $code Error code.
+ * @param string $message Error message.
+ * @return stdClass The forged object.
+ */
+function forgeErrorResponse(int $code, string $message) : stdClass {
+	$return = new stdClass;
+	$return->status = 0;
+	$return->code = $code;
+	$return->error = $message;
+	return $return;
+}

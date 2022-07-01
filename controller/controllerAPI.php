@@ -38,7 +38,7 @@ $controllerRandomCharacter = function ($request, $response, $service, $app) {
 /**
  * Return one random quote from a specific author
  * @var Callable controllerRandomAuthor
- * @route GET /api/random/personnage/[:author]
+ * @route GET /api/random/auteur/[:author]
  */
 $controllerRandomAuthor = function ($request, $response, $service, $app) {
 	if (!empty($request->author)) {

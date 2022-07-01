@@ -9,6 +9,7 @@
  */
 $controllerRandom = function ($request, $response, $service, $app) {
 	$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], NULL, 1);
+	$resUpdate = $app->db->update('QUOTES', ['quotes_counter_random'=>$resDB[0]['quotes_counter_random']+1], ['quotes_id'=>$resDB[0]['quotes_id']]);
 	$response->json(formatQuoteResponse($resDB[0]));
 };
 
@@ -23,6 +24,7 @@ $controllerRandomCharacter = function ($request, $response, $service, $app) {
 		$character = $app->db->select('CHARACTERS', NULL, NULL, ['CHARACTERS'=>['characters_name'=>$request->character]]);
 		if (count($character) == 1) {
 			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['CHARACTERS'=>['characters_id'=>$character[0]['characters_id']]], 1);
+			$resUpdate = $app->db->update('QUOTES', ['quotes_counter_random'=>$resDB[0]['quotes_counter_random']+1], ['quotes_id'=>$resDB[0]['quotes_id']]);
 			$response->json(formatQuoteResponse($resDB[0]));
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown character.'));
@@ -43,6 +45,7 @@ $controllerRandomAuthor = function ($request, $response, $service, $app) {
 		$author = $app->db->select('AUTHORS', NULL, NULL, ['AUTHORS'=>['authors_name'=>$request->author]]);
 		if (count($author) == 1) {
 			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['AUTHORS'=>['authors_id'=>$author[0]['authors_id']]], 1);
+			$resUpdate = $app->db->update('QUOTES', ['quotes_counter_random'=>$resDB[0]['quotes_counter_random']+1], ['quotes_id'=>$resDB[0]['quotes_id']]);
 			$response->json(formatQuoteResponse($resDB[0]));
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown author.'));
@@ -63,6 +66,7 @@ $controllerRandomSeason = function ($request, $response, $service, $app) {
 		$season = $app->db->select('SEASONS', NULL, NULL, ['SEASONS'=>['seasons_num'=>$request->season]]);
 		if (count($season) == 1) {
 			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['SEASONS'=>['seasons_id'=>$season[0]['seasons_id']]], 1);
+			$resUpdate = $app->db->update('QUOTES', ['quotes_counter_random'=>$resDB[0]['quotes_counter_random']+1], ['quotes_id'=>$resDB[0]['quotes_id']]);
 			$response->json(formatQuoteResponse($resDB[0]));
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown season.'));
@@ -85,6 +89,7 @@ $controllerRandomSeasonCharacter = function ($request, $response, $service, $app
 		if (count($season) == 1 && count($character) == 1) {
 			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['SEASONS'=>['seasons_id'=>$season[0]['seasons_id']], 'CHARACTERS'=>['characters_id'=>$character[0]['characters_id']]], 1);
 			if (count($resDB) > 0) {
+				$resUpdate = $app->db->update('QUOTES', ['quotes_counter_random'=>$resDB[0]['quotes_counter_random']+1], ['quotes_id'=>$resDB[0]['quotes_id']]);
 				$response->json(formatQuoteResponse($resDB[0]));
 			} else {
 				$response->json(forgeErrorResponse(400, 'No quotes available for this request.'));

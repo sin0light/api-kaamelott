@@ -132,6 +132,26 @@ $controllerAllCharacter = function ($request, $response, $service, $app) {
 
 
 /**
+ * Return all quotes from a specific author
+ * @var Callable controllerAllAuthor
+ * @route GET /api/all/author/[:author]
+ */
+$controllerAllAuthor = function ($request, $response, $service, $app) {
+	if (!empty($request->author)) {
+		$author = $app->db->select('AUTHORS', NULL, NULL, ['AUTHORS'=>['authors_name'=>$request->author]]);
+		if (count($author) == 1) {
+			$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['AUTHORS'=>['authors_id'=>$author[0]['authors_id']]]);
+			$response->json(formatQuotesResponse($resDB));
+		} else {
+			$response->json(forgeErrorResponse(400, 'Unknown author.'));
+		}
+	} else {
+		$response->json(forgeErrorResponse(400, 'No author provided.'));
+	}
+};
+
+
+/**
  * Return all quotes from a specific season
  * @var Callable controllerAllSeason
  * @route GET /api/all/livre/[:season]

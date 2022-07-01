@@ -69,7 +69,7 @@ $router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $co
 // Get all characters
 $router->respond('GET', '/api/personnage/all', $controllerCharactersAll);
 // Get all authors
-$router->respond('GET', '/api/authors/all', $controllerAuthorsAll);
+$router->respond('GET', '/api/auteur/all', $controllerAuthorsAll);
 
 
 // Sounds

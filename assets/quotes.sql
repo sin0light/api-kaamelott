@@ -63,7 +63,6 @@ INSERT INTO ACTORS (actors_name) VALUES ('Simon Astier');
 INSERT INTO AUTHORS (authors_name) VALUES ('Alexandre Astier');
 INSERT INTO AUTHORS (authors_name) VALUES ('Lionnel Astier');
 INSERT INTO AUTHORS (authors_name) VALUES ('Fabien Rault');
-INSERT INTO AUTHORS (authors_name) VALUES ('Lionel Astier');
 INSERT INTO AUTHORS (authors_name) VALUES ('Alexandre Astier - Simon Astier');
 INSERT INTO AUTHORS (authors_name) VALUES ('Nicolas Gabion');
 INSERT INTO CHARACTERS (characters_name, characters_refactor) VALUES ('Angharad', 1);
@@ -477,7 +476,7 @@ INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Un roi à la taverne', 21, 1, 1);
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Le Professionnel', 23, 1, 6);
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Les Tuteurs ', 24, 1, 2);
-INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Plus près de Toi', 18, 6, 2);
+INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Plus près de Toi', 18, 5, 2);
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Les esclaves', 88, 1, 2);
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Le banquet des chefs', 16, 1, 1);
 INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES ('Le cas Yvain', 39, 1, 1);

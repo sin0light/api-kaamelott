@@ -50,7 +50,7 @@ Un status `0` sera retourné, ainsi que le code d'erreur et un message correspon
 Retourne une citation aléatoire parmis toutes les citations disponibles.
 
 `GET /all`  
-Retourne toutes les citations disponible. **776** citations sont disponibles.
+Retourne toutes les citations disponible. **765** citations sont disponibles.
 
 ## Personnage
 

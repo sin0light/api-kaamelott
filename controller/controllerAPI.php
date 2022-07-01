@@ -34,6 +34,26 @@ $controllerRandomCharacter = function ($request, $response, $service, $app) {
 
 
 /**
+ * Return one random quote from a specific author
+ * @var Callable controllerRandomAuthor
+ * @route GET /api/random/personnage/[:author]
+ */
+$controllerRandomAuthor = function ($request, $response, $service, $app) {
+	if (!empty($request->author)) {
+		$author = $app->db->select('AUTHORS', NULL, NULL, ['AUTHORS'=>['authors_name'=>$request->author]]);
+		if (count($author) == 1) {
+			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['AUTHORS'=>['authors_id'=>$author[0]['authors_id']]], 1);
+			$response->json(formatQuoteResponse($resDB[0]));
+		} else {
+			$response->json(forgeErrorResponse(400, 'Unknown author.'));
+		}
+	} else {
+		$response->json(forgeErrorResponse(400, 'No author provided.'));
+	}
+};
+
+
+/**
  * Return one random quote from a specific season
  * @var Callable controllerRandomSeason
  * @route GET /api/random/livre/[:season]

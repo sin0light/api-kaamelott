@@ -47,6 +47,8 @@ $router->respond('GET', '/', $controllerHome);
 $router->respond('GET', '/api/random', $controllerRandom);
 // By character
 $router->respond('GET', '/api/random/personnage/[:character]', $controllerRandomCharacter);
+// By author
+$router->respond('GET', '/api/random/auteur/[:author]', $controllerRandomAuthor);
 // By season
 $router->respond('GET', '/api/random/livre/[i:season]', $controllerRandomSeason);
 // By season and character

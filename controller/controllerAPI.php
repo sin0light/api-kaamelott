@@ -64,7 +64,11 @@ $controllerRandomSeasonCharacter = function ($request, $response, $service, $app
 		$character = $app->db->select('CHARACTERS', NULL, NULL, ['CHARACTERS'=>['characters_name'=>$request->character]]);
 		if (count($season) == 1 && count($character) == 1) {
 			$resDB = $app->db->select('QUOTES', [''=>'random()'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['SEASONS'=>['seasons_id'=>$season[0]['seasons_id']], 'CHARACTERS'=>['characters_id'=>$character[0]['characters_id']]], 1);
-			$response->json(formatQuoteResponse($resDB[0]));
+			if (count($resDB) > 0) {
+				$response->json(formatQuoteResponse($resDB[0]));
+			} else {
+				$response->json(forgeErrorResponse(400, 'No quotes available for this request.'));
+			}
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown season or character.'));
 		}

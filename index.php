@@ -58,8 +58,8 @@ $router->respond('GET', '/api/all', $controllerAll);
 $router->respond('GET', '/api/all/personnage/[:character]', $controllerAllCharacter);
 // By season
 $router->respond('GET', '/api/all/livre/[i:season]', $controllerAllSeason);
-// // By season and character
-// $router->respond('GET', '/api/all/livre/[:season]/personnage/[:character]', $controllerAllSeasonCharacter);
+// By season and character
+$router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $controllerAllSeasonCharacter);
 
 // // Sounds
 // $router->respond('GET', '/api/sounds/[:filename]', $controllerSounds);

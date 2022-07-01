@@ -2932,7 +2932,7 @@ Encore une chance qu'on se soit pas fait construire un buffet à vaisselle, hein
 |saison=Livre I
 |épisode=La kleptomane}}
 {{citation=(À Bohort)Vous êtes marié, comme moi ; vous savez que la monstruosité peut prendre des formes très diverses.
-|auteur=Lionel Astier
+|auteur=Lionnel Astier
 |acteur=Lionnel Astier
 |série=Kaamelott
 |saison=Livre I

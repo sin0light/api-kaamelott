@@ -1,89 +1,84 @@
 <?php
-// Ignore it 
-include 'logging.php';
+/**
+ * API Kamelott
+ * MVC API website using Klein.php as router.
+ */
 
-// Slims' Ressources
+
+/**
+ * Load composer packages and require controllers files.
+ */
 require 'vendor/autoload.php';
 
-// Kaamelott's lib
-require 'lib/lib-kaamelott/kaamelott.class.php';
-$kaamelott = new kaamelott;
+// Controllers' files
+require_once 'controller/controllerUtils.php';
+require_once 'controller/controllerAPI.php';
 
-// Create Your container
-$c = new \Slim\Container();
 
-// Override the default Not Found Handler
-$c['notFoundHandler'] = function ($c) {
-	return function ($request, $response) use ($c) {
-		$return['status'] = 0;
-		$return['error'] = 'Chemin inconnu';
-		return $c['response']
-			->withStatus(404)
-			->withJson($return);
-	};
-};
-
-// Declaring the router
-$app = new Slim\App($c);
-
-// Home page
-$app->get('/', function ($request, $response, $args) {
-	return $response->write(file_get_contents('./home.html'));
+/**
+ * Set environement.
+ */
+// Start PHP sessions
+session_start();
+// Set local datetime
+date_default_timezone_set('Europe/Paris');
+// Create router
+$router = new \Klein\Klein();
+// Define applications to be used from any controller
+$router->respond(function ($request, $response, $service, $app) {
+	$app->register('db', function() {
+        // Config file
+        include('config.php');
+		
+        return new \DataManagement\DataManagement('pgsql', $database['host'], $database['port'], $database['dbname'], $database['user'], $database['password']);
+	});
 });
 
-// One random quote without filter
-$app->get('/api/random', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->random());
-});
 
-// One random quote from one designated season
-$app->get('/api/random/livre/{livre}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->randomLivre($args['livre']));
-});
+/**
+ * Declare routes
+ */
 
-// One random quote from one designated character
-$app->get('/api/random/personnage/{personnage}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->randomPersonnage($args['personnage']));
-});
+// Redirect to about page in french
+$router->respond('GET', '/', $controllerHome);
 
-// One random quote from one designated season and character
-$app->get('/api/random/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->randomLivrePersonnage($args['livre'], $args['personnage']));
-});
+// API calls
+// Random quotes
+$router->respond('GET', '/api/random', $controllerRandom);
+// By character
+$router->respond('GET', '/api/random/personnage/[:character]', $controllerRandomCharacter);
+// By author
+$router->respond('GET', '/api/random/auteur/[:author]', $controllerRandomAuthor);
+// By season
+$router->respond('GET', '/api/random/livre/[i:season]', $controllerRandomSeason);
+// By season and character
+$router->respond('GET', '/api/random/livre/[i:season]/personnage/[:character]', $controllerRandomSeasonCharacter);
 
-// All the quotes without filter
-$app->get('/api/all', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->all());
-});
+// All quotes
+$router->respond('GET', '/api/all', $controllerAll);
+// By character
+$router->respond('GET', '/api/all/personnage/[:character]', $controllerAllCharacter);
+// By author
+$router->respond('GET', '/api/all/auteur/[:author]', $controllerAllAuthor);
+// By season
+$router->respond('GET', '/api/all/livre/[i:season]', $controllerAllSeason);
+// By season and character
+$router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $controllerAllSeasonCharacter);
 
-// All the quotes from one designated season
-$app->get('/api/all/livre/{livre}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->allLivre($args['livre']));
-});
+// Others
+// Get all characters
+$router->respond('GET', '/api/personnage/all', $controllerCharactersAll);
+// Get all authors
+$router->respond('GET', '/api/auteur/all', $controllerAuthorsAll);
 
-// All the quotes from one designated character
-$app->get('/api/all/personnage/{personnage}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->allPersonnage($args['personnage']));
-});
 
-// All the quotes from one designated season and character
-$app->get('/api/all/livre/{livre}/personnage/{personnage}', function ($request, $response, $args) {
-	global $kaamelott;
-	return $response->withJson($kaamelott->allLivrePersonnage($args['livre'], $args['personnage']));
-});
+// Sounds
+$router->respond('GET', '/api/sounds/[:filename]', $controllerSounds);
 
-// Serve audio files
-$app->get('/sounds/{file}', function ($request, $response, $args) {
-	return $response->write(file_get_contents('./assets/sounds/'.$args['file'].'.mp3'))->withHeader('Content-type', 'audio/mpeg');
-});
 
-$app->run();
+// Catch errors
+$router->onHttpError($controllerErrors);
 
-?>
+
+// End of routing
+$router->dispatch();

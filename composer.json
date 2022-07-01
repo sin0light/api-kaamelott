@@ -1,0 +1,6 @@
+{
+    "require": {
+        "klein/klein": "^2.1",
+        "benclerc/datamanagement": "^1.6"
+    }
+}

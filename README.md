@@ -35,11 +35,12 @@ Un status `1` sera retourné, ainsi que le body contenant la réponse.
 }
 ```  
 ### Erreur
-Un status `0` sera retourné, ainsi qu'un message d'erreur correspondant.  
+Un status `0` sera retourné, ainsi que le code d'erreur et un message correspondant.  
 ```json
 {
   "status": 0,
-  "error": "Chemin inconnu"
+  "code": 404,
+  "error": "Unknown path."
 }
 ```
 

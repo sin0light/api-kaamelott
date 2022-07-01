@@ -61,6 +61,11 @@ $router->respond('GET', '/api/all/livre/[i:season]', $controllerAllSeason);
 // By season and character
 $router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $controllerAllSeasonCharacter);
 
+// Others
+// Get all characters
+$router->respond('GET', '/api/personnage/all', $controllerCharactersAll);
+
+
 // Sounds
 $router->respond('GET', '/api/sounds/[:filename]', $controllerSounds);
 

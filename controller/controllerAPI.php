@@ -171,6 +171,25 @@ $controllerSounds = function ($request, $response, $service, $app) {
 };
 
 
+/** OTHERS */
+
+/**
+ * Return all characters
+ * @var Callable controllerAllCharacters
+ * @route GET /api/personnage/all
+ */
+$controllerCharactersAll = function ($request, $response, $service, $app) {
+	$resDB = $app->db->select('CHARACTERS', ['characters_name'=>'ASC']);
+	$return = new stdClass;
+	$return->status = 1;
+	$return->characters = [];
+	foreach ($resDB as $value) {
+		$return->characters[] = $value['characters_name'];
+	}
+	$response->json($return);
+};
+
+
 
 /**
  * MISC

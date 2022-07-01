@@ -11,6 +11,21 @@ $controllerRandom = function ($request, $response, $service, $app) {
 
 
 /**
+ * Return all quotes
+ * @var Callable controllerAll
+ * @route GET /api/all
+ */
+$controllerAll = function ($request, $response, $service, $app) {
+	$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']]);
+	$all = [];
+	foreach ($resDB as $value) {
+		$all[] = formatQuoteResponse($value);
+	}
+	$response->json($all);
+};
+
+
+/**
  * Return one random quote from a specific character
  * @var Callable controllerRandomCharacter
  * @route GET /api/random/personnage/[:character]

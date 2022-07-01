@@ -53,7 +53,7 @@ $router->respond('GET', '/api/random/livre/[i:season]', $controllerRandomSeason)
 // $router->respond('GET', '/api/random/livre/[:season]/personnage/[:character]', $controllerRandomSeasonCharacter);
 
 // // All quotes
-// $router->respond('GET', '/api/all', $controllerAll);
+$router->respond('GET', '/api/all', $controllerAll);
 // // By character
 // $router->respond('GET', '/api/all/personnage/[:character]', $controllerAllCharacter);
 // // By season

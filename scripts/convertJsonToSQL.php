@@ -99,6 +99,20 @@ foreach ($content as $key => $value) {
 	}
 }
 
+// Authors
+$done = [];
+$idAuthor = [];
+$i = 1;
+foreach ($content as $key => $value) {
+	if (!in_array($value['author'], $done)) {
+		echo('INSERT INTO AUTHORS (authors_name) VALUES (\''.escapeSQuotes($value['author']).'\');
+');
+		$idAuthor[$value['author']] = $i;
+		$i++;
+		$done[] = $value['author'];
+	}
+}
+
 // Characters
 $done = [];
 $idCharacter = [];
@@ -124,10 +138,10 @@ $i = 1;
 foreach ($content as $key => $value) {
 	if (!in_array($value['title'], $done)) {
 		if (!empty($value['title']) && !empty($value['episode'])) {
-			echo('INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refseason) VALUES (\''.escapeSQuotes($value['title']).'\', '.$value['episode'].', '.$idSeason[$value['season']].');
+			echo('INSERT INTO EPISODES (episodes_name, episodes_num, episodes_refauthor, episodes_refseason) VALUES (\''.escapeSQuotes($value['title']).'\', '.$value['episode'].', '.$idAuthor[$value['author']].', '.$idSeason[$value['season']].');
 ');
 		} else {
-			echo('INSERT INTO EPISODES (episodes_name, episodes_refseason) VALUES (\''.escapeSQuotes($value['title']).'\', '.$idSeason[$value['season']].');
+			echo('INSERT INTO EPISODES (episodes_name, episodes_refauthor, episodes_refseason) VALUES (\''.escapeSQuotes($value['title']).'\', '.$idAuthor[$value['author']].', '.$idSeason[$value['season']].');
 ');
 		}
 		$idEpisode[$value['title']] = $i;

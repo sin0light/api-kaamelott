@@ -17,11 +17,7 @@ $controllerRandom = function ($request, $response, $service, $app) {
  */
 $controllerAll = function ($request, $response, $service, $app) {
 	$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']]);
-	$all = [];
-	foreach ($resDB as $value) {
-		$all[] = formatQuoteResponse($value);
-	}
-	$response->json($all);
+	$response->json(formatQuotesResponse($resDB));
 };
 
 
@@ -55,11 +51,7 @@ $controllerAllCharacter = function ($request, $response, $service, $app) {
 		$character = $app->db->select('CHARACTERS', NULL, NULL, ['CHARACTERS'=>['characters_name'=>$request->character]]);
 		if (count($character) == 1) {
 			$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['CHARACTERS'=>['characters_id'=>$character[0]['characters_id']]]);
-			$all = [];
-			foreach ($resDB as $value) {
-				$all[] = formatQuoteResponse($value);
-			}
-			$response->json($all);
+			$response->json(formatQuotesResponse($resDB));
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown character.'));
 		}
@@ -99,11 +91,7 @@ $controllerAllSeason = function ($request, $response, $service, $app) {
 		$season = $app->db->select('SEASONS', NULL, NULL, ['SEASONS'=>['seasons_num'=>$request->season]]);
 		if (count($season) == 1) {
 			$resDB = $app->db->select('QUOTES', ['seasons_num'=>'ASC', 'episodes_num'=>'ASC', 'episodes_name'=>'ASC', 'quotes_text'=>'ASC'], ['EPISODES'=>['INNER', 'quotes_refepisode', 'episodes_id'], 'CHARACTERS'=>['INNER', 'quotes_refcharacter', 'characters_id'], 'AUTHORS'=>['INNER', 'episodes_refauthor', 'authors_id', 'EPISODES'], 'SEASONS'=>['INNER', 'episodes_refseason', 'seasons_id', 'EPISODES'], 'ACTORS'=>['INNER', 'characters_refactor', 'actors_id', 'CHARACTERS']], ['SEASONS'=>['seasons_id'=>$season[0]['seasons_id']]]);
-			$all = [];
-			foreach ($resDB as $value) {
-				$all[] = formatQuoteResponse($value);
-			}
-			$response->json($all);
+			$response->json(formatQuotesResponse($resDB));
 		} else {
 			$response->json(forgeErrorResponse(400, 'Unknown season.'));
 		}
@@ -119,8 +107,8 @@ $controllerAllSeason = function ($request, $response, $service, $app) {
  */
 
 /**
- * Format response as a JSON document
- * @param array $quote Array with the DB result of the quote selection
+ * Format response for a single quote as a JSON document
+ * @param array $quote Array with the DB result of the quote
  * @return stdClass The forged object
  */
 function formatQuoteResponse(array $quote) : stdClass {
@@ -134,6 +122,31 @@ function formatQuoteResponse(array $quote) : stdClass {
 	$return->citation->infos->personnage = $quote['characters_name'];
 	$return->citation->infos->saison = $quote['seasons_name'];
 	$return->citation->infos->episode = $quote['episodes_name'];
+
+	return $return;
+}
+
+/**
+ * Format response for multiple quotes as a JSON document
+ * @param array $quote Array with the DB result of the quote selection
+ * @return stdClass The forged object
+ */
+function formatQuotesResponse(array $quotes) : stdClass {
+	$return = new stdClass;
+	$return->status = 1;
+	$return->citation = [];
+	foreach ($quotes as $value) {
+		$quote = new stdClass;
+		$quote->citation = $value['quotes_text'];
+		$quote->infos = new stdClass;
+		$quote->infos->auteur = $value['authors_name'];
+		$quote->infos->acteur = $value['actors_name'];
+		$quote->infos->personnage = $value['characters_name'];
+		$quote->infos->saison = $value['seasons_name'];
+		$quote->infos->episode = $value['episodes_name'];
+		
+		$return->citation[] = $quote;
+	}
 
 	return $return;
 }

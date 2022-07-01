@@ -1,10 +1,10 @@
 INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre I', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre II', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre IV', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre V', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre VI', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre III', 1);
-INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Pilote', 1);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre II', 2);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre IV', 4);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre V', 5);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre VI', 6);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Livre III', 3);
+INSERT INTO SEASONS (seasons_name, seasons_num) VALUES ('Pilote', 0);
 INSERT INTO ACTORS (actors_name) VALUES ('Vanessa Guedj');
 INSERT INTO ACTORS (actors_name) VALUES ('Anouk Grinberg');
 INSERT INTO ACTORS (actors_name) VALUES ('Emmanuel Meirieu');

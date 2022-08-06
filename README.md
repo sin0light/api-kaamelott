@@ -82,18 +82,18 @@ Un status `0` sera retourné, ainsi que le code d'erreur et un message correspon
 
 ## Citations
 
-`GET /random`  
+`GET /random`
 Retourne une citation aléatoire parmis toutes les citations disponibles.
 
-`GET /all`  
+`GET /all`
 Retourne toutes les citations disponible. **765** citations sont disponibles.
 
 ## Personnage
 
-`GET /random/personnage/:personnage`  
+`GET /random/personnage/:personnage`
 Retourne une citation aléatoire parmis toutes les citations du personnage.
 
-`GET /all/personnage/:personnage`  
+`GET /all/personnage/:personnage`
 Retourne toutes les citations du personnage.
 
 **Paramètres**
@@ -103,10 +103,10 @@ Retourne toutes les citations du personnage.
 
 ## Auteur
 
-`GET /random/auteur/:auteur`  
+`GET /random/auteur/:auteur`
 Retourne une citation aléatoire parmis toutes les citations de l'auteur.
 
-`GET /all/auteur/:auteur`  
+`GET /all/auteur/:auteur`
 Retourne toutes les citations de l'auteur.
 
 **Paramètres**
@@ -116,16 +116,16 @@ Retourne toutes les citations de l'auteur.
 
 ## Livre
 
-`GET /random/livre/:livre`  
+`GET /random/livre/:livre`
 Retourne une citation aléatoire parmis toutes les citations du livre.
 
-`GET /random/livre/:livre/personnage/:personnage`  
+`GET /random/livre/:livre/personnage/:personnage`
 Retourne une citation aléatoire parmis toutes les citations du personnage dans le livre.  
 
-`GET /all/livre/:livre`  
+`GET /all/livre/:livre`
 Retourne toutes les citations du livre.
   
-`GET /all/livre/:livre/personnage/:personnage`  
+`GET /all/livre/:livre/personnage/:personnage`
 Retourne toutes les citations du personnage dans le livre.
 
 **Paramètres**
@@ -134,10 +134,20 @@ Retourne toutes les citations du personnage dans le livre.
 | livre | Integer |  Chiffre entre 1 et 6. Numéro du livre dont vous souhaitez les citations.
 | personnage | String | Nom du personnage dont vous souhaitez les citations. [Voir liste des personnages disponibles](#liste-des-personnages)
 
+## Portrait des personnages
+
+`GET /all/personnage/:personnage/pic`
+Retourne le portrait du personnage.
+
+**Paramètres**
+| Nom | Type | Description |
+| - | -|  - |
+| personnage | String | Nom du personnage dont vous souhaitez les citations. [Voir liste des personnages disponibles](#liste-des-personnages)
+
 ## Soundbox
 
-`GET /sounds/:filename`  
-Retourne le fichier .mp3. 
+`GET /sounds/:filename`
+Retourne le fichier .mp3.
 
 **Paramètres**
 | Nom | Type | Description |

@@ -66,6 +66,8 @@ $router->respond('GET', '/api/all/livre/[i:season]', $controllerAllSeason);
 $router->respond('GET', '/api/all/livre/[i:season]/personnage/[:character]', $controllerAllSeasonCharacter);
 
 // Others
+// Get a character's picture
+$router->respond('GET', '/api/personnage/[:character]/pic', $controllerCharacterPic);
 // Get all characters
 $router->respond('GET', '/api/personnage/all', $controllerCharactersAll);
 // Get all authors

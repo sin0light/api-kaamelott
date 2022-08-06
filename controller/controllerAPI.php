@@ -219,6 +219,31 @@ $controllerSounds = function ($request, $response, $service, $app) {
 /** OTHERS */
 
 /**
+ * Return a character's picture
+ * @var Callable controllerCharacterPic
+ * @route GET /api/personnage/[:character]/pic
+ */
+$controllerCharacterPic = function ($request, $response, $service, $app) {
+	if (!empty($request->character)) {
+		$character = $app->db->select('CHARACTERS', NULL, NULL, ['CHARACTERS'=>['characters_name'=>$request->character]]);
+		if (count($character) == 1) {
+			if (!empty($character[0]["characters_pic"])) {
+				$response->header("Content-Type", "image/jpeg");
+				$response->append(base64_decode($character[0]["characters_pic"]));
+				$response->send();
+			} else {
+				$response->json(forgeErrorResponse(400, 'Picture for this character is unavailable.'));
+			}
+		} else {
+			$response->json(forgeErrorResponse(400, 'Unknown character.'));
+		}
+	} else {
+		$response->json(forgeErrorResponse(400, 'No character provided.'));
+	}
+};
+
+
+/**
  * Return all characters
  * @var Callable controllerCharactersAll
  * @route GET /api/personnage/all

@@ -136,7 +136,7 @@ Retourne toutes les citations du personnage dans le livre.
 
 ## Portrait des personnages
 
-`GET /all/personnage/:personnage/pic`
+`GET /personnage/:personnage/pic`
 Retourne le portrait du personnage.
 
 **Paramètres**

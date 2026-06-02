@@ -25,19 +25,19 @@ foreach ($quotes as $kquote => $quote) {
 	$citation = $acteur = $auteur = $série = $saison = $épisode = $title = NULL;
 	
 	foreach ($res as $value) {
-		if (substr($value, 0, 9) == "citation=") {
+		if (str_starts_with($value, "citation=")) {
 			$citation = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 7) == "acteur=") {
+		} elseif (str_starts_with($value, "acteur=")) {
 			$acteur = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 7) == "auteur=") {
+		} elseif (str_starts_with($value, "auteur=")) {
 			$auteur = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 7) == "série=") {
+		} elseif (str_starts_with($value, "série=")) {
 			$série = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 7) == "saison=") {
+		} elseif (str_starts_with($value, "saison=")) {
 			$saison = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 9) == "épisode=") {
+		} elseif (str_starts_with($value, "épisode=")) {
 			$épisode = substr($value, strpos($value, "=")+1);
-		} elseif (substr($value, 0, 6) == "title=") {
+		} elseif (str_starts_with($value, "title=")) {
 			$title = substr($value, strpos($value, "=")+1);
 		} else {
 			echo("Erreur pour ".$value);

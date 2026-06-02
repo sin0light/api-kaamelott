@@ -9,6 +9,7 @@
  * Load composer packages and require controllers files.
  */
 require 'vendor/autoload.php';
+$config = require __DIR__ . '/config.php';
 
 // Controllers' files
 require_once 'controller/controllerUtils.php';
@@ -25,12 +26,16 @@ date_default_timezone_set('Europe/Paris');
 // Create router
 $router = new \Klein\Klein();
 // Define applications to be used from any controller
-$router->respond(function ($request, $response, $service, $app) {
-	$app->register('db', function() {
-        // Config file
-        include('config.php');
-		
-        return new \DataManagement\DataManagement('pgsql', $database['host'], $database['port'], $database['dbname'], $database['user'], $database['password']);
+$router->respond(function ($request, $response, $service, $app) use ($config) {
+	$app->register('db', function() use ($config) {
+		return new \DataManagement\DataManagement(
+			$config['db_driver'],
+			$config['db_host'],
+			$config['db_port'],
+			$config['db_name'],
+			$config['db_user'],
+			$config['db_password']
+		);
 	});
 });
 
